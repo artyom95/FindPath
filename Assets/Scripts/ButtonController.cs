@@ -1,41 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-  [SerializeField]
-  private List<GameObject> _buttonList = new List<GameObject>();
+    [SerializeField] 
+    private List<GameObject> _buttonList = new List<GameObject>();
 
-  [SerializeField] 
-  private Map _map;
+    [SerializeField] 
+    private Map _map;
 
-  
-  private bool _isStartButtonPressed;
-  
-  [UsedImplicitly]
-  public void DeactivateAllButtons()
-  {
-    var tiles = _map.GetTiles();
-    foreach (var tile in tiles)
+
+    [UsedImplicitly]
+    public void DeactivateAllButtons()
     {
-      if (tile == null)
-      {
-        return;
-      }
+        var tiles = _map.GetTiles();
+        foreach (var tile in tiles)
+        {
+            if (tile == null)
+            {
+                return;
+            }
+        }
+
+        foreach (var button in _buttonList)
+        {
+            button.SetActive(false);
+        }
     }
 
-    foreach (var button in _buttonList)
+
+    public void DeactivateTileButtons()
     {
-      button.SetActive(false);
+        var button = _buttonList.Where(button => button.name.Equals("SimpleTile") || button.name.Equals("ObstacleTile"))
+            .ToList();
+        foreach (var gameObject in button)
+        {
+            gameObject.GetComponent<Button>().enabled = false;
+        }
     }
-
-    _isStartButtonPressed = true;
-  }
-
-  public bool HasButtonStartPressed()
-  {
-    return _isStartButtonPressed;
-  }
 }

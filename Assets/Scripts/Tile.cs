@@ -4,15 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using Input = UnityEngine.Windows.Input;
 
-public  class Tile : MonoBehaviour
+public class Tile : MonoBehaviour
 {
-    [SerializeField]
-    private Color _allowingColor;
-    [SerializeField]
-    private Color _forbiddingColor;
-    [SerializeField]
-    private Color _highlightingColor;
-    
+    [SerializeField] private Color _allowingColor;
+    [SerializeField] private Color _forbiddingColor;
+    [SerializeField] private Color _highlightingColor;
+
     private List<Material> _materials = new();
 
     private void Awake()
@@ -23,6 +20,7 @@ public  class Tile : MonoBehaviour
             _materials.Add(meshRenderer.material);
         }
     }
+
     public void SetColor(bool available)
     {
         if (available)
@@ -41,14 +39,14 @@ public  class Tile : MonoBehaviour
         }
     }
 
-    public void SetHighlight( )
+    public void SetHighlight()
     {
         foreach (var material in _materials)
         {
             material.color = _highlightingColor;
         }
     }
-    
+
 
     public void ResetColor()
     {
@@ -57,6 +55,4 @@ public  class Tile : MonoBehaviour
             material.color = Color.white;
         }
     }
-
-    
 }

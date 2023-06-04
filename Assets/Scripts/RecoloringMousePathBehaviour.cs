@@ -6,40 +6,35 @@ public class RecoloringMousePathBehaviour : MonoBehaviour
 {
     [SerializeField] private LayerMask _layer;
 
-    
-    [SerializeField]
-    private Map _map;
 
-    [SerializeField] 
-    private MapIndexProvider _mapIndexProvider;
+    [SerializeField] private Map _map;
 
-    [SerializeField] 
-    private ButtonController _buttonController;
+    [SerializeField] private MapIndexProvider _mapIndexProvider;
 
-    [SerializeField]
-    private PathHighLightingAfterClick _pathHighLightingAfterClick;
+    [SerializeField] private ButtonController _buttonController;
+
+    [SerializeField] private PathHighLightingAfterClick _pathHighLightingAfterClick;
 
     private GameObject _highlightableObject;
 
     private GameObject _currentObject;
 
     private bool _isObjectHighlight;
+
     // Update is called once per frame
     void Update()
     {
-      /*  if (_buttonController.HasButtonStartPressed() && !_pathHighLightingAfterClick.HasHighLightingPath())
-        {
-            MouseTracking();
-        }
-
-       */
-       
+        /*  if (_buttonController.HasButtonStartPressed() && !_pathHighLightingAfterClick.HasHighLightingPath())
+          {
+              MouseTracking();
+          }
+  
+         */
     }
 
     public void MouseTracking()
     {
-       
-         _currentObject = GetHighlightObject();
+        _currentObject = GetHighlightObject();
         if (_currentObject != _highlightableObject)
         {
             if (_highlightableObject != null)
@@ -52,39 +47,38 @@ public class RecoloringMousePathBehaviour : MonoBehaviour
             {
                 _currentObject.GetComponent<Tile>().SetHighlight();
                 _isObjectHighlight = true;
-                         
             }
+
             _highlightableObject = _currentObject;
-         
         }
     }
 
-  
-         private GameObject GetHighlightObject()
-         {
+
+    private GameObject GetHighlightObject()
+    {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray,  out var  hitInfo))
+        if (Physics.Raycast(ray, out var hitInfo))
+        {
+            var highlightableObject = hitInfo.collider.gameObject;
+            if (highlightableObject.CompareTag("SimpleTile"))
             {
-                var highlightableObject = hitInfo.collider.gameObject;
-                if (highlightableObject.CompareTag("SimpleTile"))
-                { 
-                    return highlightableObject;
-                }
+                return highlightableObject;
             }
+        }
 
         return null;
-         }
+    }
 
 
-         public bool GetStatusHighlightObject()
-         {
-             if (_isObjectHighlight)
-             {
-                 return true;
-             }
+    public bool GetStatusHighlightObject()
+    {
+        if (_isObjectHighlight)
+        {
+            return true;
+        }
 
-             return false;
-         }
+        return false;
+    }
 }
 /*
  

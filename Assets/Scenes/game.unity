@@ -274,7 +274,7 @@ RectTransform:
   m_GameObject: {fileID: 151265350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 16116965}
@@ -750,9 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103f01dad4177f44f8c3cbf4c3825bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shortestPathProvider: {fileID: 369234332}
-  _choosePlaceToFinish: {fileID: 1263717228}
-  _playerProvider: {fileID: 556775515}
   _map: {fileID: 1592264514}
 --- !u!224 &488956718 stripped
 RectTransform:
@@ -983,13 +980,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62af6af0f1865eb4dad90284bf2ccd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerController: {fileID: 1628761750241054821, guid: e565e046f9d854048824af708308f3f7, type: 3}
+  _playerController: {fileID: -1959526304396114484, guid: e565e046f9d854048824af708308f3f7, type: 3}
   _mapBuilder: {fileID: 1759723804}
   _playerProvider: {fileID: 556775515}
   _recoloringMousePathBehaviour: {fileID: 691410770}
   _choosePlaceToFinish: {fileID: 1263717228}
   _shortestPathProvider: {fileID: 369234332}
   _pathHighLightingAfterClick: {fileID: 369234334}
+  _buttonController: {fileID: 16116966}
 --- !u!4 &551713346
 Transform:
   m_ObjectHideFlags: 0
@@ -1053,9 +1051,7 @@ MonoBehaviour:
   _map: {fileID: 1592264514}
   _obstacle: {fileID: 4822957276665715105, guid: 32aa5fe9b3fd53142bd05e084fa9969d, type: 3}
   _simplePrefab: {fileID: 976523354156320879, guid: 9b2a02323a097d7469ec5afb3c36ea9a, type: 3}
-  _playerController: {fileID: 1628761750241054821, guid: e565e046f9d854048824af708308f3f7, type: 3}
-  _pathHighLightingAfterClick: {fileID: 369234334}
-  _speed: 0.05
+  _speed: 0.03
 --- !u!1001 &684707418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3501,7 +3497,7 @@ RectTransform:
   m_GameObject: {fileID: 2026700528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 16116965}

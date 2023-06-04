@@ -9,33 +9,40 @@ using Random = UnityEngine.Random;
 public class PlayerController : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
-  [SerializeField]
     private Animator _animator;
-    private bool _isPrefabMoving;
+    private GameObject _prefab;
 
-    private void Start()
+
+    private void ReceivePrefab(GameObject gameObject)
     {
         
-         }
-
-    private void Update()
-    {
-        _animator.SetBool(IsMoving, _isPrefabMoving);
-
+            if (gameObject != null)
+            {
+                _prefab = gameObject;
+                _animator = _prefab.GetComponent<Animator>();
+            }
+            else
+            {
+                Debug.Log("Error: gameObject is null!");
+            }
+        
     }
 
-    public void Moving()
+    public void Moving(GameObject gameObject)
     {
-        _isPrefabMoving = true;
+        
+        ReceivePrefab(gameObject);
+        _animator.SetBool(IsMoving, true);
     }
+
     public void Staying()
     {
-        _isPrefabMoving = false;
+        _animator.SetBool(IsMoving, false);
+        _animator = default;
     }
     // По умолчанию у персонажа проигрывается анимация покоя.
     // Для того, чтобы запустить анимацию ходьбы - передавайте в параметр аниматора IsMoving значение true:
     // _animator.SetBool(IsMoving, true);
     // Для того, чтобы запустить анимацию покоя - передавайте в параметр аниматора IsMoving значение false:
     // _animator.SetBool(IsMoving, false);
-   
 }

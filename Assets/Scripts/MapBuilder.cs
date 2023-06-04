@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class MapBuilder : MonoBehaviour
 {
-    [SerializeField] 
-    private Map _map;
-    [SerializeField] 
-    private MapIndexProvider _mapIndexProvider;
+    [SerializeField] private Map _map;
+    [SerializeField] private MapIndexProvider _mapIndexProvider;
 
     private Camera _camera;
     private Tile _currentTile;
 
-    private bool _isMapBuilded ;
+    private bool _isMapBuilded;
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -69,12 +68,11 @@ public class MapBuilder : MonoBehaviour
     public bool HasMapBuilded()
     {
         var countTiles = _map.GetAmountTilesInMap();
-        if (countTiles >=100)
+        if (countTiles >= 100)
         {
             return true;
         }
-        
+
         return false;
     }
-    
 }
